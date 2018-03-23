@@ -1,4 +1,4 @@
-# A basic web server using sockets.
+# A basic web server using sockets
 
 import socket
 import os
