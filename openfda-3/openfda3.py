@@ -1,6 +1,5 @@
 IP = "localhost"  # Localhost means "I": your local machine
 PORT = 9007
-
 import http.server
 import socketserver
 import http.client
@@ -24,8 +23,7 @@ for element in repos["results"]:
     else:
         names.append(element["openfda"]["generic_name"][0])
 
-print(names)
-elementlilist=[]
+
 intro="<ol>"+"\n"
 end ="</ol>"+"\n"
 with open("htmlopenfda3.html","w") as f:
