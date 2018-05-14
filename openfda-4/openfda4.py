@@ -24,12 +24,9 @@ class testHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
                 message = index
             self.wfile.write(bytes(message, "utf8"))
         else:
-
-            path = str(self.path)
-            print(path)
-            if "=" in path:
-                drug = path[path.find("label")+6:path.find("&")]
-                limit =path[path.find("limit")+6:]
+            if "=" in self.path:
+                drug = self.path[self.path.find("label")+6:self.path.find("&")]
+                limit =self.path[self.path.find("limit")+6:]
 
                 headers = {'User-Agent': 'http-client'}
 
@@ -47,7 +44,9 @@ class testHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
                         elementli="<li>"+element["openfda"]["brand_name"][0]+"</li>"+"\n"
                         self.wfile.write(bytes(elementli, "utf8"))
                     self.wfile.write(bytes("</ol>","utf8"))
+                    #include if brand name is noting the repostory--> print noot found in the html
             else:
+                #Error, open the initial page and search for drug and limit
                 print("")
         print("File served!")
         return
@@ -80,7 +79,7 @@ class testHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
         self.send_header('Content-type', 'text/html')
         self.end_headers()
 
-        with open("htmlopenfda3.html", "r") as f:
+        with open("htmlopenfda4.html", "r") as f:
              message= f.read()
         self.wfile.write(bytes(message, "utf8"))
         print("File served!")

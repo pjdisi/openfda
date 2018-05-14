@@ -1,5 +1,5 @@
 IP = "localhost"  # Localhost means "I": your local machine
-PORT = 9007
+PORT = 9005
 import http.server
 import socketserver
 import http.client
